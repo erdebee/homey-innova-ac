@@ -1,0 +1,242 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "nl.pulsive.innova",
+  "version": "1.0.0",
+  "compatibility": ">=1.5.0",
+  "sdk": 2,
+  "name": {
+    "en": "Innova 2.0 AC"
+  },
+  "description": {
+    "en": "Adds support for Innova WiFi connected airco's."
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Roy Brondgeest",
+    "email": "roy.brondgeest@pulsive.nl"
+  },
+  "drivers": [
+    {
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "onoff",
+        "innova_mode",
+        "night_mode",
+        "flap_rotate",
+        "fan_speed"
+      ],
+      "class": "thermostat",
+      "id": "innova_ac",
+      "images": {
+        "large": "/drivers/innova_ac/assets/images/large.png",
+        "small": "/drivers/innova_ac/assets/images/small.png"
+      },
+      "name": {
+        "en": "Innova AC",
+        "nl": "Innova AC"
+      },
+      "pair": [
+        {
+          "id": "enter_ip"
+        },
+        {
+          "id": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "template": "list_devices"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "fan_speed": {
+      "type": "enum",
+      "title": {
+        "nl": "Ventilator snelheid",
+        "en": "Fan speed"
+      },
+      "getable": true,
+      "setable": true,
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "Automatic",
+            "nl": "Automatisch",
+            "de": "Automatisch",
+            "fr": "Automatique",
+            "it": "Automatica",
+            "sv": "Automatiskt",
+            "no": "Automatisk",
+            "es": "Automático",
+            "da": "Automatisk"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Low",
+            "nl": "Laag"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Medium",
+            "nl": "Gemiddeld"
+          }
+        },
+        {
+          "id": "3",
+          "title": {
+            "en": "High",
+            "nl": "Hoog"
+          }
+        }
+      ],
+      "uiComponent": "picker"
+    },
+    "flap_rotate": {
+      "type": "boolean",
+      "title": {
+        "nl": "Flap roteren",
+        "en": "Flap rotation"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle"
+    },
+    "innova_mode": {
+      "type": "enum",
+      "title": {
+        "en": "Thermostat mode",
+        "nl": "Thermostaat modus",
+        "de": "Thermostat-Modus",
+        "fr": "Mode thermostat",
+        "it": "Modalità termostato",
+        "sv": "Termostatläge",
+        "no": "Termostatmodus",
+        "es": "Modo del termostato",
+        "da": "Termostattilstand"
+      },
+      "desc": {
+        "en": "Mode of the thermostat",
+        "nl": "Modus van de thermostaat",
+        "de": "Modus des Thermostates",
+        "fr": "Mode du thermostat",
+        "it": "Modalità del termostato",
+        "sv": "Läge för termostaten",
+        "no": "Modus for termostaten",
+        "es": "Modo del termostato",
+        "da": "Tilstand for termostat"
+      },
+      "values": [
+        {
+          "id": "auto",
+          "title": {
+            "en": "Automatic",
+            "nl": "Automatisch",
+            "de": "Automatisch",
+            "fr": "Automatique",
+            "it": "Automatica",
+            "sv": "Automatiskt",
+            "no": "Automatisk",
+            "es": "Automático",
+            "da": "Automatisk"
+          }
+        },
+        {
+          "id": "schedule",
+          "title": {
+            "en": "Schedule",
+            "nl": "Planning",
+            "de": "Planung",
+            "fr": "Planification",
+            "it": "Pianificazione",
+            "sv": "Schedule",
+            "no": "Schedule",
+            "es": "Planificación",
+            "da": "Schedule"
+          }
+        },
+        {
+          "id": "dehumidification",
+          "title": {
+            "en": "Dehumidify",
+            "nl": "Ontvochtigen",
+            "de": "Entfeuchten",
+            "fr": "Déshumidification",
+            "it": "Deshumidificación",
+            "sv": "Dehumidify",
+            "no": "Dehumidify",
+            "es": "Deshumidificación",
+            "da": "Dehumidify"
+          }
+        },
+        {
+          "id": "heating",
+          "title": {
+            "en": "Heat",
+            "nl": "Verhitten",
+            "de": "Heizen",
+            "fr": "Chauffer",
+            "it": "Calore",
+            "sv": "Värme",
+            "no": "Varme",
+            "es": "Calentar",
+            "da": "Opvarm"
+          }
+        },
+        {
+          "id": "cooling",
+          "title": {
+            "en": "Cool",
+            "nl": "Koelen",
+            "de": "Kühlen",
+            "fr": "Refroidir",
+            "it": "Raffreddamento",
+            "sv": "Kyla",
+            "no": "Avkjøle",
+            "es": "Enfriar",
+            "da": "Køl ned"
+          }
+        },
+        {
+          "id": "fanonly",
+          "title": {
+            "en": "Fan only",
+            "nl": "Alleen ventilator",
+            "de": "Nür Blasen"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": true,
+      "uiComponent": "picker"
+    },
+    "night_mode": {
+      "type": "boolean",
+      "title": {
+        "nl": "Nacht modus",
+        "en": "Night mode"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "icon": "assets/night_mode.svg"
+    }
+  }
+}

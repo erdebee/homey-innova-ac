@@ -1,0 +1,24 @@
+{
+  "id": "nl.pulsive.innova",
+  "version": "1.0.0",
+  "compatibility": ">=1.5.0",
+  "sdk": 2,
+  "name": {
+    "en": "Innova 2.0 AC"
+  },
+  "description": {
+    "en": "Adds support for Innova WiFi connected airco's."
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Roy Brondgeest",
+    "email": "roy.brondgeest@pulsive.nl"
+  }
+}

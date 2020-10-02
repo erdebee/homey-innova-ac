@@ -1,0 +1,37 @@
+{
+    "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "onoff",
+        "innova_mode",
+        "night_mode",
+        "flap_rotate",
+        "fan_speed"               
+    ],
+    "class": "thermostat",
+    "id": "innova_ac",
+    "images": {
+        "large": "/drivers/innova_ac/assets/images/large.png",
+        "small": "/drivers/innova_ac/assets/images/small.png"
+    },
+    "name": {
+        "en": "Innova AC",
+        "nl": "Innova AC" 
+    },
+    "pair": [
+        {
+            "id": "enter_ip"
+        },
+        {
+            "id": "list_devices",
+            "navigation": {
+                "next": "add_devices"
+            },
+            "template": "list_devices"
+        },
+        {
+            "id": "add_devices",
+            "template": "add_devices"
+        }
+    ]
+}

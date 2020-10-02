@@ -1,0 +1,14 @@
+{
+    "pair": {
+        "start": {
+            "deviceName": "Device name",
+            "error": "An error has occurred.",
+            "intro": "Enter device IP address and name<br/><br/>IP can be found in the Innova app, section \"advanced\".",
+            "invalidIP": "Please enter a valid IPv4 address, e.g. 192.168.1.10",
+            "ipAddress": "IP address",
+            "required": "IP address is a required value.",
+            "saveSettings": "Save settings",
+            "title": "Finding device..."
+        }
+    }
+}
