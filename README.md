@@ -1,8 +1,11 @@
 # Innova2.0 AC - Homey app
 
-Adds support for Innova WiFi connected airco's. This airco is also rebranded/whitelabeled by `Thermo Comfort`. 
-- Thermocomfort 
-- Innova 
+Adds support for Innova WiFi connected airco's. 
+This airco is also rebranded/whitelabeled by `Thermo Comfort`. 
+
+Atleast know to work the following models:
+- Thermocomfort 10HP / 12HP (elec)
+- Innova 10HP / 12HP (elec) 
 
 To use this application, download these sourcefiles, install homey SDK and type 
 
