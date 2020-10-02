@@ -2,6 +2,8 @@
 
 Adds support for Innova WiFi connected airco's.
 
+To use this application, download these sourcefiles, install homey SDK and type `homey app install` 
+
 ---
 ## Use at your own responsibility
 Author takes no responsibility in any damage caused by this application to persons or their belongings, under any circumstance.
