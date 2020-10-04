@@ -1,0 +1,13 @@
+{
+	  "title":{
+		 "en":"Night mode is !{{on|off}}",
+		 "nl":"Nacht modus is !{{uitgezet|aangezet}}"
+	  },
+        "args": [
+          {
+            "name": "my_device",
+            "type": "device",
+            "filter": "driver_id=innova_ac"
+          }
+        ]
+}

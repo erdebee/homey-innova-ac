@@ -1,0 +1,13 @@
+{
+	  "title":{
+		 "en":"Toggle flap rotation",
+		 "nl":"Flap roteer modus schakelen"
+	  },
+        "args": [
+          {
+            "name": "my_device",
+            "type": "device",
+            "filter": "driver_id=innova_ac"
+          }
+        ]
+}

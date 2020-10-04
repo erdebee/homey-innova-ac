@@ -11,7 +11,7 @@ class InnovaAC extends Homey.Device {
   async onInit() {
     this.log('InnovaAC has been initialized');
     this.refreshStatus();
-    setInterval((e) => e.refreshStatus(), 5000, this)
+    setInterval((e) => e.refreshStatus(), 15000, this)
     this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
     this.registerCapabilityListener('flap_rotate', this.onCapabilityFlapRotate.bind(this));
     this.registerCapabilityListener('night_mode', this.onCapabilityNightMode.bind(this));
@@ -157,10 +157,18 @@ class InnovaAC extends Homey.Device {
   }
   
   setInnovaMode(mode) {
-    return this.sendCommand('set/mode/'+mode,true)
-    	.then(res => { if (!res) {
-			throw new Error('unsuccessful');
-    	}});
+    this.setCapabilityValue("onoff", true);
+    if (mode == "schedule") {
+    	return this.sendCommand('set/calendar/on',true)
+    		.then(res => { if (!res) {
+				throw new Error('unsuccessful');
+	    	}});  
+    }else{
+    	return this.sendCommand('set/mode/'+mode,true)
+    		.then(res => { if (!res) {
+				throw new Error('unsuccessful');
+	    	}});
+    }	
   }
   
   refreshStatus() {
@@ -220,10 +228,16 @@ class InnovaAC extends Homey.Device {
   
   updateIpAndRetry(cb) {
     let settings = this.getSettings();
+    let data = this.getData();
+    
 	let hostIP = settings.settingIPAddress;
     let uri = 'http://innovaenergie.cloud/api/v/1/connection';
     this.log('Updating IP from innova cloud and retry');
     
+    let headers = { 
+      'X-Serial': data.serial,
+      'X-UID': data.uid
+    };
     return fetch(uri, { timeout: 3000 })
       .then(res => res.json())
       .then(jsonBody => {

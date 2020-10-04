@@ -1,0 +1,105 @@
+   {
+			  "id":"thermostat_mode_is",
+			  "title":{
+				 "en":"Thermostat mode is",
+				 "nl":"Thermostaat modus is",
+				 "de":"Thermostat-Modus ist",
+				 "fr":"Mode thermostat est",
+				 "it":"La modalità del termostato è",
+				 "sv":"Termostatläge är",
+				 "no":"Termostatmodus er",
+				 "es":"El modo del termostato es",
+				 "da":"Termostattilstand er"
+			  },
+			  "args":[
+				{
+					"name": "my_device",
+					"type": "device",
+					"filter": "driver_id=innova_ac"
+				},			  
+				 {
+					"name":"thermostat_mode",
+					"type":"dropdown",
+					"values":[
+					   {
+						  "id":"auto",
+						  "title":{
+							 "en":"Automatic",
+							 "nl":"Automatisch",
+							 "de":"Automatisch",
+							 "fr":"Automatique",
+							 "it":"Automatica",
+							 "sv":"Automatiskt",
+							 "no":"Automatisk",
+							 "es":"Automático",
+							 "da":"Automatisk"
+						  }
+					   },
+					   {
+						  "id":"schedule",
+						  "title":{
+							 "en":"Schedule",
+							 "nl":"Planning",
+							 "de":"Planung",
+							 "fr":"Planification",
+							 "it":"Pianificazione",
+							 "sv":"Schedule",
+							 "no":"Schedule",
+							 "es":"Planificación",
+							 "da":"Schedule"
+						  }
+					   },
+					   {
+						  "id":"dehumidification",
+						  "title":{
+							 "en":"Dehumidify",
+							 "nl":"Ontvochtigen",
+							 "de":"Entfeuchten",
+							 "fr":"Déshumidification",
+							 "it":"Deshumidificación",
+							 "sv":"Dehumidify",
+							 "no":"Dehumidify",
+							 "es":"Deshumidificación",
+							 "da":"Dehumidify"
+						  }
+					   },
+					   {
+						  "id":"heating",
+						  "title":{
+							 "en":"Heat",
+							 "nl":"Verhitten",
+							 "de":"Heizen",
+							 "fr":"Chauffer",
+							 "it":"Calore",
+							 "sv":"Värme",
+							 "no":"Varme",
+							 "es":"Calentar",
+							 "da":"Opvarm"
+						  }
+					   },
+					   {
+						  "id":"cooling",
+						  "title":{
+							 "en":"Cool",
+							 "nl":"Koelen",
+							 "de":"Kühlen",
+							 "fr":"Refroidir",
+							 "it":"Raffreddamento",
+							 "sv":"Kyla",
+							 "no":"Avkjøle",
+							 "es":"Enfriar",
+							 "da":"Køl ned"
+						  }
+					   },
+						{
+						   "id":"fanonly",
+						   "title":{
+							  "en":"Fan only",
+							  "nl":"Alleen ventilator",
+							  "de":"Nür Blasen"
+						   }
+						}
+					]
+				 }
+			  ]
+		   }

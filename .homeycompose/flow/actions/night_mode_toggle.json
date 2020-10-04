@@ -1,0 +1,13 @@
+{
+	  "title":{
+		 "en":"Toggle night mode",
+		 "nl":"Nacht modus omschakelen"
+	  },
+        "args": [
+          {
+            "name": "my_device",
+            "type": "device",
+            "filter": "driver_id=innova_ac"
+          }
+        ]
+}
