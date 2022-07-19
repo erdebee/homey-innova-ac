@@ -354,7 +354,6 @@
         "id": "night_mode_is"
       },
       {
-        "id": "thermostat_mode_is",
         "title": {
           "en": "Thermostat mode is",
           "nl": "Thermostaat modus is",
@@ -456,7 +455,8 @@
               }
             ]
           }
-        ]
+        ],
+        "id": "thermostat_mode_is"
       }
     ],
     "actions": [

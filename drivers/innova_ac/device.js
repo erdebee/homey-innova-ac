@@ -115,37 +115,59 @@ class InnovaAC extends Homey.Device {
   }
   
   flapOn() {
+  	let device = this;  
     return this.sendCommand('set/feature/rotation',true,{"value": 0 })
     	.then(res => {if (!res) {
 			throw new Error('unsuccessful');
-    	}});
+    	}else{
+    		this.getDriver().triggerFlapRotateToggle.trigger(device, {}, {});
+    		this.getDriver().triggerFlapRotateOn.trigger(device, {}, {});
+    	}
+	});
   }
 
   flapOff() {
+  	let device = this;  
     return this.sendCommand('set/feature/rotation',true,{"value": 7 })
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
+    	}else{
+    		this.getDriver().triggerFlapRotateToggle.trigger(device, {}, {});
+    		this.getDriver().triggerFlapRotateOff.trigger(device, {}, {});
     	}});
   }
   
   nightModeOn() {
+  	let device = this;  
     return this.sendCommand('set/feature/night',true,{"value": 1 })
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
+    	}else{
+    		this.getDriver().triggerNightModeToggle.trigger(device, {}, {});
+    		this.getDriver().triggerNightModeOn.trigger(device, {}, {});
     	}});
   }
 
   nightModeOff() {
+  	let device = this;
     return this.sendCommand('set/feature/night',true,{"value": 0 })
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
+    	}else{
+    		this.getDriver().triggerNightModeToggle.trigger(device, {}, {});
+    		this.getDriver().triggerNightModeOff.trigger(device, {}, {});
     	}});
   }
   
   setFanSpeed(speed) {
+  	let device = this;
     return this.sendCommand('set/fan',true,{"value": speed })
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
+    	}else{
+    		this.getDriver().triggerFanSpeed.trigger(device, {}, {"fan_speed": speed, "uid": device.getData().uid})
+    		    .catch( this.error )
+			    .then( this.log );
     	}});
   }
 
@@ -162,27 +184,33 @@ class InnovaAC extends Homey.Device {
     	return this.sendCommand('set/calendar/on',true)
     		.then(res => { if (!res) {
 				throw new Error('unsuccessful');
-	    	}});  
+	    	}else{
+    			this.getDriver().triggerModeChanged.trigger(device, {"thermostat_mode": "schedule"}, {});
+    		}});  
     }else{
     	return this.sendCommand('set/mode/'+mode,true)
     		.then(res => { if (!res) {
 				throw new Error('unsuccessful');
-	    	}});
+	    	}else{
+    			this.getDriver().triggerModeChanged.trigger(device, {"thermostat_mode": mode}, {});
+    		}});
     }	
   }
   
   refreshStatus() {
     let status = this.qryStatus().then(response => {
       this.log(response);
-      let r = response.RESULT;
-      this.log('Innova refreshStatus');
-      this.setCapabilityValue("target_temperature", r.sp);
-      this.setCapabilityValue("innova_mode", this.intToMode(r.wm, r.cm));
-      this.setCapabilityValue("onoff", !!r.ps);
-      this.setCapabilityValue("measure_temperature", r.t);
-      this.setCapabilityValue("night_mode", !!r.nm);
-      this.setCapabilityValue("flap_rotate", (r.fr == 0));
-      this.setCapabilityValue("fan_speed", "" + r.fs);
+      if (response) {
+		  let r = response.RESULT;
+		  this.log('Innova refreshStatus');
+		  this.setCapabilityValue("target_temperature", r.sp);
+		  this.setCapabilityValue("innova_mode", this.intToMode(r.wm, r.cm));
+		  this.setCapabilityValue("onoff", !!r.ps);
+		  this.setCapabilityValue("measure_temperature", r.t);
+		  this.setCapabilityValue("night_mode", !!r.nm);
+		  this.setCapabilityValue("flap_rotate", (r.fr == 0));
+		  this.setCapabilityValue("fan_speed", "" + r.fs);
+      }
     })
   }
 
@@ -204,13 +232,19 @@ class InnovaAC extends Homey.Device {
     let uri = 'http://' + hostIP + '/api/v/1/status';
     this.log('Query status');
     
-    let retryCallback = () => { return this.qryStatus(false) };
+    let retryCallback = () => { 
+    	return this.qryStatus(false) 
+    };
     
     return fetch(uri, { method: 'GET', timeout: 1500 })
     	.then(
-    	    res => res.json(), 
-    	    err => { if (retry) this.updateIpAndRetry(retryCallback) }
-    	); 
+    	    res => { 
+    	      return res.json();
+    	    }, 
+    	    err => { 
+    	      if (retry) this.updateIpAndRetry(retryCallback) 
+    	    }
+    	);
   }  
 
   sendCommand(command, retry = true, meta = {}) {
@@ -219,33 +253,39 @@ class InnovaAC extends Homey.Device {
     let uri = 'http://' + hostIP + '/api/v/1/' + command;
     this.log('Send command ' + command);
     
-    let retryCallback = () => { return this.sendCommand(command, false, meta) };
+    let retryCallback = () => { 
+      return this.sendCommand(command, false, meta) 
+    };
     
 	return fetch(uri, { method: 'POST', body: new URLSearchParams(meta), timeout: 1500 })
-        .then(res => res.json(), err => { if (retry) this.updateIpAndRetry(retryCallback) }) 
-		.then(jsonRes => jsonRes.success);
+        .then(async res => {
+		  return res.json().then(res => { return res.success; })
+        }, err => { 
+          if (retry) 
+            this.updateIpAndRetry(retryCallback) 
+        });
   }
   
   updateIpAndRetry(cb) {
-    let settings = this.getSettings();
-    let data = this.getData();
-    
-	let hostIP = settings.settingIPAddress;
+    let data = this.getData();    
+
     let uri = 'http://innovaenergie.cloud/api/v/1/connection';
     this.log('Updating IP from innova cloud and retry');
     
-    let headers = { 
+    let idHeaders = { 
       'X-Serial': data.serial,
       'X-UID': data.uid
     };
-    return fetch(uri, { timeout: 3000 })
-      .then(res => res.json())
-      .then(jsonBody => {
-        this.setSettings({ 'settingIPAddress': jsonBody.net.ip });
+    return fetch(uri, { timeout: 3000, headers: idHeaders})
+      .then(async res => {
+        this.log(res);
+        var jsonBody = await res.json();
+        this.setSettings({ 
+          'settingIPAddress': jsonBody.net.ip 
+        });
         this.log('Updated IP to ' + jsonBody.net.ip);
-      }, err => this.log(err))
-      .then(s => cb());
-      
+        cb();
+      }, err => this.log(err));
   }
 }
 

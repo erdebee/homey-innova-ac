@@ -11,6 +11,9 @@ class InnovaACDriver extends Homey.Driver {
   async onInit() {
     this.log('InnovaACDriver has been initialized');
 
+    //-----------------------------------------------
+    //-------------- ACTIONS ------------------------
+    
 	new Homey.FlowCardAction('fan_speed_set').register().registerRunListener((args, state) => {
 		return args.my_device.setFanSpeed(args.fan_speed);
   	});   
@@ -49,8 +52,43 @@ class InnovaACDriver extends Homey.Driver {
 		  return args.my_device.flapRotateOn();		
   	});
   	
-  	     
+    //-----------------------------------------------
+    //-------------- TRIGGERS -----------------------
 
+    this.triggerFlapRotateOn = 	 	new Homey.FlowCardTriggerDevice('flap_rotate_on').register();
+    this.triggerFlapRotateOff = 	new Homey.FlowCardTriggerDevice('flap_rotate_off').register();
+    this.triggerFlapRotateToggle = 	new Homey.FlowCardTriggerDevice('flap_rotate_toggled').register();        
+    this.triggerNightModeOn = 	 	new Homey.FlowCardTriggerDevice('night_mode_on').register();
+    this.triggerNightModeOff = 	 	new Homey.FlowCardTriggerDevice('night_mode_off').register();
+    this.triggerNightModeToggle = 	new Homey.FlowCardTriggerDevice('night_mode_toggled').register();        
+	this.triggerFanSpeed = 		 	new Homey.FlowCardTriggerDevice('fan_speed_changed').register().registerRunListener((args, state) => {
+	  this.log(args);
+	  this.log(state);	  
+  	});
+  	
+    this.triggerModeChanged = 		new Homey.FlowCardTriggerDevice('thermostat_mode_changed').register().registerRunListener((args, state) => {
+	  this.log(args);
+	  this.log(state);	  
+  	});
+
+  	
+    //-------------------------------------------------
+    //-------------- CONDITIONS -----------------------    
+  	new Homey.FlowCardCondition('fan_speed_is').register().registerRunListener((args, state) => {
+	  return args.my_device.getCapabilityValue('fan_speed');
+  	});
+  	
+  	new Homey.FlowCardCondition('flap_rotate_is').register().registerRunListener((args, state) => {
+	  return args.my_device.getCapabilityValue('flat_rotate');
+  	});
+  	
+  	new Homey.FlowCardCondition('night_mode_is').register().registerRunListener((args, state) => {
+	  return args.my_device.getCapabilityValue('night_mode');
+  	});
+  	
+  	new Homey.FlowCardCondition('thermostat_mode_is').register().registerRunListener((args, state) => {
+	  return args.my_device.getCapabilityValue('thermostat_mode');
+  	});
   };
   
   async onPair(socket) {
@@ -76,7 +114,7 @@ class InnovaACDriver extends Homey.Driver {
 			let responseObj = await response.json();
 
 			devices = [{
-				data: { id: responseObj.uid, uid: responseObj.uid, serial: responseObj.setup.serial },
+				data: { id: responseObj.uid, uid: responseObj.UID, serial: responseObj.setup.serial },
 				name: data.deviceName,
 				settings: { "settingIPAddress": data.ipaddress }
 			}];
