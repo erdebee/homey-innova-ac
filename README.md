@@ -7,7 +7,13 @@ Atleast know to work the following models:
 - Thermocomfort 10HP / 12HP (elec)
 - Innova 10HP / 12HP (elec) 
 
-To use this application, download these sourcefiles, install homey SDK and type 
+To use this application, download these sourcefiles, install homey SDK and NPM, then:
+
+First, to download all external libraries run: 
+
+`npm install`
+
+Then:
 
 `homey app install` 
 
