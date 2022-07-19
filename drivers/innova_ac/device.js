@@ -11,7 +11,7 @@ class InnovaAC extends Homey.Device {
   async onInit() {
     this.log('InnovaAC has been initialized');
     this.refreshStatus();
-    setInterval((e) => e.refreshStatus(), 15000, this)
+    setInterval((e) => e.refreshStatus(), 60000, this)
     this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
     this.registerCapabilityListener('flap_rotate', this.onCapabilityFlapRotate.bind(this));
     this.registerCapabilityListener('night_mode', this.onCapabilityNightMode.bind(this));
