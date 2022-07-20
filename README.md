@@ -29,5 +29,5 @@ Author takes no responsibility in any damage caused by this application to perso
 
 
 ---
-The brandname and logo's of `Innova` and `Thermocomfort`, are property of and copyrighted by their respective owners.
+The brandname and logo's of forementioned companies are property of and copyrighted by their respective owners.
 The author of this application has no acquintance with the companies in any way. 
