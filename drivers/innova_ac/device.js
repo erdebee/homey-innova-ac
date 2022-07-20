@@ -11,7 +11,12 @@ class InnovaAC extends Homey.Device {
   async onInit() {
     this.log('InnovaAC has been initialized');
     this.refreshStatus();
-    setInterval((e) => e.refreshStatus(), 60000, this)
+    
+    clearInterval(this.refreshInterval);
+    this.refreshInterval = setInterval(() => {
+    	this.refreshStatus();
+    }, 60000);
+    
     this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
     this.registerCapabilityListener('flap_rotate', this.onCapabilityFlapRotate.bind(this));
     this.registerCapabilityListener('night_mode', this.onCapabilityNightMode.bind(this));
@@ -98,6 +103,7 @@ class InnovaAC extends Homey.Device {
    */
   async onDeleted() {
     this.log('InnovaAC has been deleted');
+    clearInterval(this.refreshInterval);
   }
   
   powerOn() {
@@ -198,7 +204,7 @@ class InnovaAC extends Homey.Device {
   }
   
   refreshStatus() {
-    let status = this.qryStatus().then(response => {
+    return this.qryStatus().then(response => {
       this.log(response);
       if (response) {
 		  let r = response.RESULT;
