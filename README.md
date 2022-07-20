@@ -3,9 +3,12 @@
 Adds support for Innova WiFi connected airco's. 
 This airco is also rebranded/whitelabeled by `Thermo Comfort`. 
 
-Atleast know to work the following models:
+Atleast know to work with the following models (since theyre all rebrands of the same device):
 - Thermocomfort 10HP / 12HP (elec)
 - Innova 10HP / 12HP (elec) 
+- TC Como 2.0
+- MaxiCool 
+- Cooper & Hunter CH-VC13TH
 
 To use this application, download these sourcefiles, install homey SDK and NPM, then:
 
