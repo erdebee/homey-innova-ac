@@ -22,6 +22,10 @@ Then:
 
 in your console / terminal.
 
+## Buy me a beer
+Happily using this app? I maintain it in my free time.
+Consider supporting this project, use my paypal link to donate: [click here](https://paypal.me/roybrondgeest)
+
 ---
 ### Use at your own responsibility
 Author takes no responsibility in any damage caused by this application to persons or their belongings, under any circumstance.
