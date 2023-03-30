@@ -3,6 +3,10 @@
 		"en":"Fan speed is",
 		"nl":"Ventilator snelheid is"
 	},
+	"titleFormatted":{
+		"en":"Fan speed is [[fan_speed]]",
+		"nl":"Ventilator snelheid is [[fan_speed]]"
+	},	
 	"args": [
 	{
 		"name": "my_device",

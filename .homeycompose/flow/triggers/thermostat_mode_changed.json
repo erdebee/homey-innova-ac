@@ -10,6 +10,10 @@
 		 "es":"El modo del termostato ha cambiado",
 		 "da":"Termostattilstand er blevet ændret"
 	  },
+	  "titleFormatted":{
+		"en":"Thermostat mode has changed to [[thermostat_mode]]",
+		"nl":"Thermostaat modus is veranderd naar [[thermostat_mode]]"
+	 },
 	  "args":[
 		{
 			"name": "my_device",

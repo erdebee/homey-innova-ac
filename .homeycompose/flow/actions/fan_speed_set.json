@@ -3,6 +3,10 @@
 		"en":"Set fan speed to",
 		"nl":"Stel ventilator snelheid in op"
 	},
+	"titleFormatted":{
+		"en":"Set fan speed to [[fan_speed]]",
+		"nl":"Stel ventilator snelheid in op [[fan_speed]]"
+	},	
 	"args": [
 	{
 		"name": "my_device",

@@ -10,6 +10,10 @@
 		 "es":"Configurar el modo",
 		 "da":"Indstil tilstanden"
 	  },
+	  "titleFormatted":{
+		"en":"Set the mode to [[thermostat_mode]]",
+		"nl":"Stel de modus in op [[thermostat_mode]]"
+	 },
 	  "args":[
 		{
 			"name": "my_device",

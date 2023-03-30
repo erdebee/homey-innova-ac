@@ -1,8 +1,8 @@
 {
   "id": "nl.pulsive.innova",
-  "version": "1.0.0",
-  "compatibility": ">=1.5.0",
-  "sdk": 2,
+  "version": "2.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
   "name": {
     "en": "Innova 2.0 AC"
   },
