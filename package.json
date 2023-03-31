@@ -6,6 +6,7 @@
     "homey": "^2.33.10"
   },
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.4",
+    "node-fetch": "^3.3.1"
   }
 }
