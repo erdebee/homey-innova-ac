@@ -185,6 +185,7 @@ class InnovaAC extends Homey.Device {
   }
   
   setInnovaMode(mode) {
+  	let device = this;
     this.setCapabilityValue("onoff", true);
     if (mode == "schedule") {
     	return this.sendCommand('set/calendar/on',true)
