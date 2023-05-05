@@ -14,38 +14,38 @@ class InnovaACDriver extends Homey.Driver {
     //-----------------------------------------------
     //-------------- ACTIONS ------------------------
     
-	new Homey.FlowCardAction('fan_speed_set').register().registerRunListener((args, state) => {
+	this.homey.flow.getActionCard('fan_speed_set').registerRunListener((args, state) => {
 		return args.my_device.setFanSpeed(args.fan_speed);
   	});   
   	
-	new Homey.FlowCardAction('thermostat_mode_set').register().registerRunListener((args, state) => {
+	this.homey.flow.getActionCard('thermostat_mode_set').registerRunListener((args, state) => {
 		return args.my_device.setInnovaMode(args.thermostat_mode);
   	});     	     
 
-	new Homey.FlowCardAction('night_mode_on').register().registerRunListener((args, state) => {
+	this.homey.flow.getActionCard('night_mode_on').registerRunListener((args, state) => {
 		return args.my_device.nightModeOn();
   	});
   	
-  	new Homey.FlowCardAction('night_mode_off').register().registerRunListener((args, state) => {
+  	this.homey.flow.getActionCard('night_mode_off').registerRunListener((args, state) => {
 		return args.my_device.nightModeOff();
   	});
 
-	new Homey.FlowCardAction('night_mode_toggle').register().registerRunListener((args, state) => {
+	this.homey.flow.getActionCard('night_mode_toggle').registerRunListener((args, state) => {
 		if (args.my_device.getCapabilityValue('night_mode'))
 		  return args.my_device.nightModeOff();
 		else  
 		  return args.my_device.nightModeOn();		
   	});
   	
-  	new Homey.FlowCardAction('flap_rotate_on').register().registerRunListener((args, state) => {
+  	this.homey.flow.getActionCard('flap_rotate_on').registerRunListener((args, state) => {
 		return args.my_device.flapRotateOn();
   	});
   	
-  	new Homey.FlowCardAction('flap_rotate_off').register().registerRunListener((args, state) => {
+  	this.homey.flow.getActionCard('flap_rotate_off').registerRunListener((args, state) => {
 		return args.my_device.flapRotateOff();
   	});
   	
-  	new Homey.FlowCardAction('flap_rotate_toggle').register().registerRunListener((args, state) => {
+  	this.homey.flow.getActionCard('flap_rotate_toggle').registerRunListener((args, state) => {
 		if (args.my_device.getCapabilityValue('flap_rotate'))
 		  return args.my_device.flapRotateOff();
 		else  
@@ -55,18 +55,18 @@ class InnovaACDriver extends Homey.Driver {
     //-----------------------------------------------
     //-------------- TRIGGERS -----------------------
 
-    this.triggerFlapRotateOn = 	 	new Homey.FlowCardTriggerDevice('flap_rotate_on').register();
-    this.triggerFlapRotateOff = 	new Homey.FlowCardTriggerDevice('flap_rotate_off').register();
-    this.triggerFlapRotateToggle = 	new Homey.FlowCardTriggerDevice('flap_rotate_toggled').register();        
-    this.triggerNightModeOn = 	 	new Homey.FlowCardTriggerDevice('night_mode_on').register();
-    this.triggerNightModeOff = 	 	new Homey.FlowCardTriggerDevice('night_mode_off').register();
-    this.triggerNightModeToggle = 	new Homey.FlowCardTriggerDevice('night_mode_toggled').register();        
-	this.triggerFanSpeed = 		 	new Homey.FlowCardTriggerDevice('fan_speed_changed').register().registerRunListener((args, state) => {
+    this.triggerFlapRotateOn = 	 	this.homey.flow.getDeviceTriggerCard('flap_rotate_on');
+    this.triggerFlapRotateOff = 	this.homey.flow.getDeviceTriggerCard('flap_rotate_off');
+    this.triggerFlapRotateToggle = 	this.homey.flow.getDeviceTriggerCard('flap_rotate_toggled');        
+    this.triggerNightModeOn = 	 	this.homey.flow.getDeviceTriggerCard('night_mode_on');
+    this.triggerNightModeOff = 	 	this.homey.flow.getDeviceTriggerCard('night_mode_off');
+    this.triggerNightModeToggle = 	this.homey.flow.getDeviceTriggerCard('night_mode_toggled');        
+	this.triggerFanSpeed = 		 	this.homey.flow.getDeviceTriggerCard('fan_speed_changed').registerRunListener((args, state) => {
 	  this.log(args);
 	  this.log(state);	  
   	});
   	
-    this.triggerModeChanged = 		new Homey.FlowCardTriggerDevice('thermostat_mode_changed').register().registerRunListener((args, state) => {
+    this.triggerModeChanged = 		this.homey.flow.getDeviceTriggerCard('thermostat_mode_changed').registerRunListener((args, state) => {
 	  this.log(args);
 	  this.log(state);	  
   	});
@@ -74,19 +74,19 @@ class InnovaACDriver extends Homey.Driver {
   	
     //-------------------------------------------------
     //-------------- CONDITIONS -----------------------    
-  	new Homey.FlowCardCondition('fan_speed_is').register().registerRunListener((args, state) => {
+  	this.homey.flow.getConditionCard('fan_speed_is').registerRunListener((args, state) => {
 	  return args.my_device.getCapabilityValue('fan_speed');
   	});
   	
-  	new Homey.FlowCardCondition('flap_rotate_is').register().registerRunListener((args, state) => {
+  	this.homey.flow.getConditionCard('flap_rotate_is').registerRunListener((args, state) => {
 	  return args.my_device.getCapabilityValue('flat_rotate');
   	});
   	
-  	new Homey.FlowCardCondition('night_mode_is').register().registerRunListener((args, state) => {
+  	this.homey.flow.getConditionCard('night_mode_is').registerRunListener((args, state) => {
 	  return args.my_device.getCapabilityValue('night_mode');
   	});
   	
-  	new Homey.FlowCardCondition('thermostat_mode_is').register().registerRunListener((args, state) => {
+  	this.homey.flow.getConditionCard('thermostat_mode_is').registerRunListener((args, state) => {
 	  return args.my_device.getCapabilityValue('thermostat_mode');
   	});
   };

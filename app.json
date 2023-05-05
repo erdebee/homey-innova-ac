@@ -1,9 +1,9 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.pulsive.innova",
-  "version": "1.0.0",
-  "compatibility": ">=1.5.0",
-  "sdk": 2,
+  "version": "2.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
   "name": {
     "en": "Innova 2.0 AC"
   },
@@ -28,6 +28,10 @@
         "title": {
           "en": "Fan speed has changed to",
           "nl": "Ventilator snelheid is veranderd naar"
+        },
+        "titleFormatted": {
+          "en": "Fan speed has changed to [[fan_speed]]",
+          "nl": "Ventilator snelheid is veranderd naar [[fan_speed]]"
         },
         "args": [
           {
@@ -175,6 +179,10 @@
           "es": "El modo del termostato ha cambiado",
           "da": "Termostattilstand er blevet ændret"
         },
+        "titleFormatted": {
+          "en": "Thermostat mode has changed to [[thermostat_mode]]",
+          "nl": "Thermostaat modus is veranderd naar [[thermostat_mode]]"
+        },
         "args": [
           {
             "name": "my_device",
@@ -275,6 +283,10 @@
           "en": "Fan speed is",
           "nl": "Ventilator snelheid is"
         },
+        "titleFormatted": {
+          "en": "Fan speed is [[fan_speed]]",
+          "nl": "Ventilator snelheid is [[fan_speed]]"
+        },
         "args": [
           {
             "name": "my_device",
@@ -364,6 +376,17 @@
           "no": "Termostatmodus er",
           "es": "El modo del termostato es",
           "da": "Termostattilstand er"
+        },
+        "titleFormatted": {
+          "en": "Thermostat mode is [[thermostat_mode]]",
+          "nl": "Thermostaat modus is [[thermostat_mode]]",
+          "de": "Thermostat-Modus ist [[thermostat_mode]]",
+          "fr": "Mode thermostat est [[thermostat_mode]]",
+          "it": "La modalità del termostato è [[thermostat_mode]]",
+          "sv": "Termostatläge är [[thermostat_mode]]",
+          "no": "Termostatmodus er [[thermostat_mode]]",
+          "es": "El modo del termostato es [[thermostat_mode]]",
+          "da": "Termostattilstand er [[thermostat_mode]]"
         },
         "args": [
           {
@@ -464,6 +487,10 @@
         "title": {
           "en": "Set fan speed to",
           "nl": "Stel ventilator snelheid in op"
+        },
+        "titleFormatted": {
+          "en": "Set fan speed to [[fan_speed]]",
+          "nl": "Stel ventilator snelheid in op [[fan_speed]]"
         },
         "args": [
           {
@@ -610,6 +637,10 @@
           "no": "Innstill modusen",
           "es": "Configurar el modo",
           "da": "Indstil tilstanden"
+        },
+        "titleFormatted": {
+          "en": "Set the mode to [[thermostat_mode]]",
+          "nl": "Stel de modus in op [[thermostat_mode]]"
         },
         "args": [
           {

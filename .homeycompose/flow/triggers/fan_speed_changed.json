@@ -3,6 +3,10 @@
 		"en":"Fan speed has changed to",
 		"nl":"Ventilator snelheid is veranderd naar"
 	},
+	"titleFormatted":{
+		"en":"Fan speed has changed to [[fan_speed]]",
+		"nl":"Ventilator snelheid is veranderd naar [[fan_speed]]"
+	},
 	"args": [
 	{
 		"name": "my_device",

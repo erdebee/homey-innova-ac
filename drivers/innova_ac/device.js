@@ -126,8 +126,8 @@ class InnovaAC extends Homey.Device {
     	.then(res => {if (!res) {
 			throw new Error('unsuccessful');
     	}else{
-    		this.getDriver().triggerFlapRotateToggle.trigger(device, {}, {});
-    		this.getDriver().triggerFlapRotateOn.trigger(device, {}, {});
+        this.driver.triggerFlapRotateToggle.trigger(device, {}, {});
+    		this.driver.triggerFlapRotateOn.trigger(device, {}, {});
     	}
 	});
   }
@@ -138,8 +138,8 @@ class InnovaAC extends Homey.Device {
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
     	}else{
-    		this.getDriver().triggerFlapRotateToggle.trigger(device, {}, {});
-    		this.getDriver().triggerFlapRotateOff.trigger(device, {}, {});
+    		this.driver.triggerFlapRotateToggle.trigger(device, {}, {});
+    		this.driver.triggerFlapRotateOff.trigger(device, {}, {});
     	}});
   }
   
@@ -149,8 +149,8 @@ class InnovaAC extends Homey.Device {
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
     	}else{
-    		this.getDriver().triggerNightModeToggle.trigger(device, {}, {});
-    		this.getDriver().triggerNightModeOn.trigger(device, {}, {});
+    		this.driver.triggerNightModeToggle.trigger(device, {}, {});
+    		this.driver.triggerNightModeOn.trigger(device, {}, {});
     	}});
   }
 
@@ -160,8 +160,8 @@ class InnovaAC extends Homey.Device {
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
     	}else{
-    		this.getDriver().triggerNightModeToggle.trigger(device, {}, {});
-    		this.getDriver().triggerNightModeOff.trigger(device, {}, {});
+    		this.driver.triggerNightModeToggle.trigger(device, {}, {});
+    		this.driver.triggerNightModeOff.trigger(device, {}, {});
     	}});
   }
   
@@ -171,7 +171,7 @@ class InnovaAC extends Homey.Device {
     	.then(res => { if (!res) {
 			throw new Error('unsuccessful');
     	}else{
-    		this.getDriver().triggerFanSpeed.trigger(device, {}, {"fan_speed": speed, "uid": device.getData().uid})
+    		this.driver.triggerFanSpeed.trigger(device, {}, {"fan_speed": speed, "uid": device.getData().uid})
     		    .catch( this.error )
 			    .then( this.log );
     	}});
@@ -191,14 +191,14 @@ class InnovaAC extends Homey.Device {
     		.then(res => { if (!res) {
 				throw new Error('unsuccessful');
 	    	}else{
-    			this.getDriver().triggerModeChanged.trigger(device, {"thermostat_mode": "schedule"}, {});
+    			this.driver.triggerModeChanged.trigger(device, {"thermostat_mode": "schedule"}, {});
     		}});  
     }else{
     	return this.sendCommand('set/mode/'+mode,true)
     		.then(res => { if (!res) {
 				throw new Error('unsuccessful');
 	    	}else{
-    			this.getDriver().triggerModeChanged.trigger(device, {"thermostat_mode": mode}, {});
+    			this.driver.triggerModeChanged.trigger(device, {"thermostat_mode": mode}, {});
     		}});
     }	
   }

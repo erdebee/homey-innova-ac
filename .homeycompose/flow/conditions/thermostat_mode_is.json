@@ -1,15 +1,26 @@
 {
-  "title":{
-	 "en":"Thermostat mode is",
-	 "nl":"Thermostaat modus is",
-	 "de":"Thermostat-Modus ist",
-	 "fr":"Mode thermostat est",
-	 "it":"La modalità del termostato è",
-	 "sv":"Termostatläge är",
-	 "no":"Termostatmodus er",
-	 "es":"El modo del termostato es",
-	 "da":"Termostattilstand er"
-  },
+	"title":{
+		"en":"Thermostat mode is",
+		"nl":"Thermostaat modus is",
+		"de":"Thermostat-Modus ist",
+		"fr":"Mode thermostat est",
+		"it":"La modalità del termostato è",
+		"sv":"Termostatläge är",
+		"no":"Termostatmodus er",
+		"es":"El modo del termostato es",
+		"da":"Termostattilstand er"
+	 },
+	 "titleFormatted":{
+		"en":"Thermostat mode is [[thermostat_mode]]",
+		"nl":"Thermostaat modus is [[thermostat_mode]]",
+		"de":"Thermostat-Modus ist [[thermostat_mode]]",
+		"fr":"Mode thermostat est [[thermostat_mode]]",
+		"it":"La modalità del termostato è [[thermostat_mode]]",
+		"sv":"Termostatläge är [[thermostat_mode]]",
+		"no":"Termostatmodus er [[thermostat_mode]]",
+		"es":"El modo del termostato es [[thermostat_mode]]",
+		"da":"Termostattilstand er [[thermostat_mode]]"
+	 },	 
   "args":[
 	{
 		"name": "my_device",
