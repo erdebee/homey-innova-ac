@@ -1,6 +1,4 @@
-# Innova2.0 AC - Homey app
-
-Adds support for Innova WiFi connected airco's. 
+App for Innova WiFi connected airco's. 
 This airco is also rebranded/whitelabeled by `Thermo Comfort`. 
 
 Atleast know to work with the following models (since theyre all rebrands of the same device):
@@ -9,20 +7,6 @@ Atleast know to work with the following models (since theyre all rebrands of the
 - TC Como 2.0
 - MaxiCool 
 - Cooper & Hunter CH-VC13TH
-
-## Developing / installing locally
-
-To dev against and use this application, download these sourcefiles, install homey SDK and NPM, then:
-
-First, to download all external libraries run: 
-
-`npm install`
-
-Then:
-
-`homey app install` 
-
-in your console / terminal.
 
 ## Buy me a beer
 Happily using this app? I maintain it in my free time.
