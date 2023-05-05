@@ -1,4 +1,4 @@
-App for Innova WiFi connected airco's. 
+# App for Innova WiFi connected airco's. 
 This airco is also rebranded/whitelabeled by `Thermo Comfort`. 
 
 Atleast know to work with the following models (since theyre all rebrands of the same device):
