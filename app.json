@@ -9,7 +9,7 @@
     "en": "Innova 2.0 AC"
   },
   "description": {
-    "en": "Adds support for Innova WiFi connected airco's."
+    "en": "Keep it cool with Homey."
   },
   "category": [
     "climate"
@@ -22,6 +22,19 @@
   "author": {
     "name": "Roy Brondgeest",
     "email": "roy.brondgeest@pulsive.nl"
+  },
+  "source": "https://github.com/erdebee/homey-innova-ac",
+  "bugs": {
+  	"url": "https://github.com/erdebee/homey-innova-ac/issues"
+  },	
+  "support": "https://github.com/erdebee/homey-innova-ac/issues",
+  "homeyCommunityTopicId": 35374,
+  "contributing": {
+  	"donate": {
+  	  "paypal": {
+  	    "username": "roybrondgeest"
+  	  }
+  	}
   },
   "flow": {
     "triggers": [
