@@ -25,16 +25,16 @@
   },
   "source": "https://github.com/erdebee/homey-innova-ac",
   "bugs": {
-  	"url": "https://github.com/erdebee/homey-innova-ac/issues"
-  },	
+    "url": "https://github.com/erdebee/homey-innova-ac/issues"
+  },
   "support": "https://github.com/erdebee/homey-innova-ac/issues",
   "homeyCommunityTopicId": 35374,
   "contributing": {
-  	"donate": {
-  	  "paypal": {
-  	    "username": "roybrondgeest"
-  	  }
-  	}
+    "donate": {
+      "paypal": {
+        "username": "roybrondgeest"
+      }
+    }
   },
   "flow": {
     "triggers": [
