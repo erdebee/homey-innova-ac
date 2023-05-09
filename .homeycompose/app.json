@@ -1,6 +1,6 @@
 {
   "id": "nl.pulsive.innova",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#5fc5df",
@@ -24,15 +24,15 @@
   },
   "source": "https://github.com/erdebee/homey-innova-ac",
   "bugs": {
-  	"url": "https://github.com/erdebee/homey-innova-ac/issues"
-  },	
+    "url": "https://github.com/erdebee/homey-innova-ac/issues"
+  },
   "support": "https://github.com/erdebee/homey-innova-ac/issues",
   "homeyCommunityTopicId": 35374,
   "contributing": {
-  	"donate": {
-  	  "paypal": {
-  	    "username": "roybrondgeest"
-  	  }
-  	}
+    "donate": {
+      "paypal": {
+        "username": "roybrondgeest"
+      }
+    }
   }
 }
