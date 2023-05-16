@@ -10,7 +10,9 @@ Atleast know to work with the following models (since theyre all rebrands of the
 - MaxiCool 
 - Cooper & Hunter CH-VC13TH
 
-To use this application, download these sourcefiles, install homey SDK and NPM, then:
+## Developing / installing locally
+
+To dev against and use this application, download these sourcefiles, install homey SDK and NPM, then:
 
 First, to download all external libraries run: 
 
