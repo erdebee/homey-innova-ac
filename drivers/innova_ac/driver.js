@@ -91,7 +91,7 @@ class InnovaACDriver extends Homey.Driver {
   	});
   };
   
-  async onPair(socket) {
+  async onPair(session) {
     var devices = [
                  {
                 "data": { "id": "initial_id", "uid": "initial_uid", "serial": "initial_serial" },
@@ -100,14 +100,15 @@ class InnovaACDriver extends Homey.Driver {
             }
     ];
     // this is called when the user presses save settings button in start.html
-	socket.on("get_devices", async function (data, callback) {
+    session.setHandler("get_devices", async (data, callback) => {
+
 
 		console.log("Innova app - get_devices data: " + JSON.stringify(data));
 		console.log("Innova app - get_devices devices: " + JSON.stringify(devices));
 
         let response = await fetch('http://' + data.ipaddress + '/api/v/1/status');
 		if(!response.ok) {
-			socket.emit("not_found", null);		
+			session.emit("not_found", null);		
 			console.log("Innova app - response is not ok");
 		} else {
 			console.log("Innova app - response is ok");
@@ -120,21 +121,22 @@ class InnovaACDriver extends Homey.Driver {
 			}];
 
 			// ready to continue pairing
-			socket.emit("found", null);
+			session.emit("found", null);
 		}
 	});
 
 	// this method is run when Homey.emit('list_devices') is run on the front-end
 	// which happens when you use the template `list_devices`
 	// pairing: start.html -> get_devices -> list_devices -> add_devices
-	socket.on("list_devices", function (data, callback) {
+	session.setHandler("list_devices", function (data, callback) {
 
 		console.log("Innova app - list_devices data: " + JSON.stringify(data));
 		console.log("Innova app - list_devices devices: " + JSON.stringify(devices));
 
-		callback(null, devices);
+		return devices;
 	});
   };	
+	
 	
   /**
    * onPairListDevices is called when a user is adding a device and the 'list_devices' view is called.
