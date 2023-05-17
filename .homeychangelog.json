@@ -4,5 +4,8 @@
   },
   "2.0.1": {
     "en": "Updated application metadata"
+  },
+  "2.0.2": {
+    "en": "SDKv3 changes, fixes"
   }
 }
