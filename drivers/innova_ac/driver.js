@@ -99,6 +99,15 @@ class InnovaACDriver extends Homey.Driver {
                 "settings": { "settingIPAddress": "0.0.0.0" } 
             }
     ];
+
+    // the pair session may already be closed (e.g. user closed the pairing window
+    // while the request was pending), in which case emit rejects with "Not Found: PairSession"
+    const safeEmit = (event, payload) => {
+        return session.emit(event, payload).catch(err => {
+            console.log("Innova app - could not emit '" + event + "': " + err.message);
+        });
+    };
+
     // this is called when the user presses save settings button in start.html
     session.setHandler("get_devices", async (data, callback) => {
 
@@ -106,10 +115,10 @@ class InnovaACDriver extends Homey.Driver {
 		console.log("Innova app - get_devices data: " + JSON.stringify(data));
 		console.log("Innova app - get_devices devices: " + JSON.stringify(devices));
 
+        let found = false;
         try {
-            let response = await fetch('http://' + data.ipaddress + '/api/v/1/status');
+            let response = await fetch('http://' + data.ipaddress + '/api/v/1/status', { timeout: 10000 });
             if(!response.ok) {
-                session.emit("not_found", null);		
                 console.log("Innova app - response is not ok");
             } else {
                 console.log("Innova app - response is ok");
@@ -120,14 +129,14 @@ class InnovaACDriver extends Homey.Driver {
                     name: data.deviceName,
                     settings: { "settingIPAddress": data.ipaddress }
                 }];
-
-                // ready to continue pairing
-                session.emit("found", null);
+                found = true;
             }
         } catch (err) {
             console.log("Innova app - fetch/parse error: " + err.message);
-            session.emit("not_found", null);
         }
+
+        // ready to continue pairing, or tell the user the device was not found
+        await safeEmit(found ? "found" : "not_found", null);
 	});
 
 	// this method is run when Homey.emit('list_devices') is run on the front-end
