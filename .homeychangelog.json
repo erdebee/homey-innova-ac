@@ -10,5 +10,8 @@
   },
   "2.0.3": {
     "en": "Fixed uncaught errors & removed duplicate code"
+  },
+  "2.0.4": {
+    "en": "Fixed crash when closing the pairing window during device search"
   }
 }
