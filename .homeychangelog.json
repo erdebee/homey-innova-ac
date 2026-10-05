@@ -13,5 +13,8 @@
   },
   "2.0.4": {
     "en": "Fixed crash when closing the pairing window during device search"
+  },
+  "2.0.5": {
+    "en": "Fix issue \"Error: Not Found: PairSession with ID\""
   }
 }
